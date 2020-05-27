@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 
 namespace InventoryManagement
 {
-    public static class OnHandChangeTrigger
+    public static class OnHandChangeTrigger 
     {
         [FunctionName("OnHandChangeTrigger")]
         public static void Run([CosmosDBTrigger(
