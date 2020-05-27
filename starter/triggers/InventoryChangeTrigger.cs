@@ -9,8 +9,8 @@ namespace InventoryManagement
     {
         [FunctionName("OnHandChangeTrigger")]
         public static void Run([CosmosDBTrigger(
-            databaseName: "CosmosDatabaseName",
-            collectionName: "CosmosOnHandContainerName",
+            databaseName: Constants.databaseName,
+            collectionName: Constants.collectionOnHand,
             ConnectionStringSetting = "CosmosConnectionString",
             LeaseCollectionName = "leases",
             CreateLeaseCollectionIfNotExists = true)]IReadOnlyList<Document> documents,
@@ -23,12 +23,13 @@ namespace InventoryManagement
             }
         }
     }
+
     public static class ShipmentChangeTrigger
     {
         [FunctionName("ShipmentChangeTrigger")]
         public static void Run([CosmosDBTrigger(
-            databaseName: "CosmosDatabaseName",
-            collectionName: "CosmosShipmentContainerName",
+            databaseName: Constants.databaseName,
+            collectionName: Constants.collectionShipments,
             ConnectionStringSetting = "CosmosConnectionString",
             LeaseCollectionName = "leases",
             CreateLeaseCollectionIfNotExists = true)]IReadOnlyList<Document> documents,
