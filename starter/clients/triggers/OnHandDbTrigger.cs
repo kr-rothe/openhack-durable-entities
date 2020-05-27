@@ -9,24 +9,24 @@ namespace InventoryManagement
 {
     public static class OnHandDbTrigger_HttpStart
     {
-        
+
         [FunctionName("OnHandDbTrigger_HttpStart")]
-        public static async Task Run(
+        public static void Run(
             [CosmosDBTrigger(
                     databaseName: "inventory",
                     collectionName: "onHand",
                     ConnectionStringSetting = "CosmosDBConnection",
-                    LeaseCollectionName="leases",
+                    LeaseCollectionName="onHand_lease",
                     CreateLeaseCollectionIfNotExists = true)]
                     IReadOnlyList<Document> input,
-                    ILogger logger)       
+                    ILogger logger)
         {
 
-            logger.LogInformation( "Count : " + input.Count);
+            logger.LogInformation("Number of documents changed in onHand container : {}", input.Count);
 
             foreach (Document doc in input)
             {
-                logger.LogInformation(doc.Id);
+                logger.LogInformation("Document Id {}", doc.Id);
             }
         }
     }
