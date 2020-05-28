@@ -1,3 +1,4 @@
+using System;
 using Newtonsoft.Json;
 
 namespace InventoryManagement
@@ -8,22 +9,22 @@ namespace InventoryManagement
         public int InventoryCount { get; set; }
 
         [JsonProperty("id")]
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("upc")]
-        public int Upc { get; set; }
+        public string Upc { get; set; }
 
         [JsonProperty("productName")]
-        public int ProductName { get; set; }
+        public string ProductName { get; set; }
 
         [JsonProperty("description")]
-        public int Description { get; set; }
+        public string Description { get; set; }
 
         [JsonProperty("lastShipmentTimestamp")]
-        public int LastShipmentTimestamp { get; set; }
+        public DateTime LastShipmentTimestamp { get; set; }
 
         [JsonProperty("lastUpdateTimestamp")]
-        public int LastUpdateTimestamp { get; set; }
+        public DateTime LastUpdateTimestamp { get; set; }
 
     }
 }

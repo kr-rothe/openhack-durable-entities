@@ -10,16 +10,16 @@ namespace InventoryManagement
         public static async Task<string> RunOrchestrator(
             [OrchestrationTrigger] IDurableOrchestrationContext context)
         {
-            string data = context.GetInput<string>();
+            EventSchema eventSchema = context.GetInput<EventSchema>();
 
-            var StoreId = new EntityId("Counter", "myCounter");
-            var proxy = context.CreateEntityProxy<ICounter>(StoreId);
+            var StoreId = new EntityId("StoreEntity", eventSchema.storeId);
+            var storeProxy = context.CreateEntityProxy<IStoreEntity>(StoreId);
 
             // One-way signal to the entity - does not await a response
-            proxy.Add(1);
+            storeProxy.updateInventoryCount(eventSchema);
 
             // Two-way call to the entity which returns a value - awaits the response
-            int currentValue = await proxy.Get().ConfigureAwait(false);
+            //int currentValue = await storeProxy.Get().ConfigureAwait(false);
 
             return "Task";
         }
