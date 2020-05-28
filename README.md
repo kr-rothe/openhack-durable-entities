@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The objective of this repository is to provide its user with a set of challenges which will help them learn about Azure Functions Durable Entities.
+The objective of this repository is to provide its user with a set of challenges which will help them learn about Azure Functions Durable Entities. Test
 
 ## Durable Functions
 
