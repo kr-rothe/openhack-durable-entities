@@ -21,7 +21,19 @@ namespace InventoryManagement
         [FunctionName(nameof(StoreEntity))]
         public static Task mdsentity([EntityTrigger] IDurableEntityContext ctx)
             => ctx.DispatchAsync<StoreEntity>();
+        
+        public async Task<Item> getStoreEntityItem(string id)
+        {
+            if (Items.ContainsKey(id)) 
+            {
+                return Items[id];
+            }
+            else 
+            {
+                return null;
+            }
 
+        }
         public void updateInventoryCount(EventSchema schema)
         {
             if (Items.ContainsKey(schema.id))

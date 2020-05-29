@@ -5,6 +5,9 @@ namespace InventoryManagement
     public interface IStoreEntity
     {
         void updateInventoryCount(EventSchema count);
+        Task<Item> getStoreEntityItem(string id);
     
     }
+
+    
 }
